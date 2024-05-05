@@ -2,6 +2,23 @@ package main
 
 import "fmt"
 
+// Passed by Value
+// These types pass a copy of the value to the function. Modifications within the function do not affect the original data:
+
+// Basic Types: int, float64, string, bool, etc.
+// Arrays: [5]int, [3]string, etc.
+// Structs: struct types (without using pointers)
+// Function Pointers: The function signature itself is passed by value, but the pointed-to function operates on reference values
+// Interfaces: The interface value itself is copied, but the actual implementation pointed to is a reference
+// Passed by Reference
+// These types are passed by reference, meaning that changes made within the function affect the original data:
+
+// Pointers: *int, *struct, etc.
+// Slices: []int, []string, etc.
+// Maps: map[string]int, etc.
+// Channels: chan int, etc.
+// Function Values: Although technically passed by value, function values usually hold references to closures or other data that can be modified indirectly
+
 func add(x int, y int) int {
 	return x + y
 }
