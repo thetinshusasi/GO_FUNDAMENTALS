@@ -6,6 +6,18 @@ import (
 	"time"
 )
 
+type connect interface {
+	myconnection()
+}
+
+type test interface {
+	mytest(t connect)
+}
+
+type test2[c connect] interface {
+	mytest(c)
+}
+
 var wg *sync.WaitGroup
 
 func dowork(delay time.Duration, resultch chan string) {

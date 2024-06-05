@@ -5,6 +5,14 @@ import (
 	"fmt"
 )
 
+type Fatal struct {
+	error
+}
+
+func (f *Fatal) Unwrap() error {
+	return f.error
+}
+
 type MyError struct {
 	Message string
 }
@@ -32,5 +40,7 @@ func main() {
 
 	err = DetailedError{Code: 404, Message: "Page not found"}
 	fmt.Println(err) // Output: Error 404: Page not found
+
+	err = &Fatal{error: errors.New("something went wrong")}
 
 }
